@@ -1,5 +1,5 @@
 ## アプリケーション名
-確認テスト：mogitate
+確認テスト：PiGLy
 
 ## ER図
 ![ER図](ER.drawio.png)
@@ -23,7 +23,7 @@ Docker/Docker-compose
 
 #### リポジトリからダウンロードして下さい
 ```
-git clone git@github.com:ayaka0601/ayaka_kadai.git
+git clone git@github.com:ayaka0601/ayaka_shiken.git
 ```
 
 #### Docker環境構築
@@ -70,10 +70,6 @@ php artisan migrate
 php artisan db:seed
 ```
 
-7.シンボリックリンクの設定
-```
-php artisan storage:link
-```
 ```
 http://localhostにアクセスして
 "The stream or file could not be opened"という

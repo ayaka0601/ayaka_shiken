@@ -14,10 +14,16 @@ use App\Http\Controllers\WeightLogController;
 |
 */
 
-//Route::get('/', [UserController::class, 'index']);
-//Route::post('/resister', [UserController::class, 'register']);
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/register/step2', [UserController::class, 'register2']);
+Route::get('/weight_logs/create', [UserController::class, 'add']);
+Route::post('/weight_logs/create', [UserController::class, 'create']);
+Route::get('/weight_logs/{:weightLogId}/update', [UserController::class, 'edit']);
+Route::post('/weight_logs/{:weightLogId}/update', [UserController::class, 'update']);
+Route::get('/weight_logs/{:weightLogId}/delete', [UserController::class, 'delete']);
+Route::post('/weight_logs/{:weightLogId}/delete', [UserController::class, 'remove']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/weight_logs', [UserController::class, 'index']);
-    Route::get('/weight_logs/create', [UserController::class, 'add']);
-    Route::post('/weight_logs/create', [UserController::class, 'create']);
+    Route::post('/logout', [UserController::class, 'login']);
 });

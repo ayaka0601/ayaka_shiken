@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\WeightLog;
 use Illuminate\Http\Request;
 use App\Http\Requests\WeightLogRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,7 +18,7 @@ class UserController extends Controller
         return view('index', ['weight_logs' => $weight_logs]);
     }
     //データ追加ページの表示
-    public function add()
+    public function add(WeightLogRequest $request)
     {
         return view('add');
     }
@@ -31,10 +32,36 @@ class UserController extends Controller
         return redirect('/weight_logs');
     }
 
-    public function delete(Request $request)
+    public function edit(Request $request)
     {
         $weight_log = WeightLog::find($request->id);
-        return view('weight_logs/{:weightLogId}/delete', ['weight_log' => $weight_log]);
+        return view('weight_logs/{:weightLogId}/delete', ['from' => $weight_log]);
     }
 
+    public function update(Request $request)
+    {
+        $form = $request->all();
+        unset($form['_token']);
+        WeightLog::find($request->id)->update($form);
+        return redirect('/weight_logs');
+    }
+
+    // データ削除用ページの表示
+    public function delete(Request $request)
+    {
+        $weight_logs = WeightLog::find($request->id);
+        return view('delete', ['weight_logs' => $weight_logs]);
+    }
+
+    // 削除機能
+    public function remove(Request $request)
+    {
+        WeightLog::find($request->id)->delete();
+        return redirect('/weight_logs');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('auth.login');
+    }
 }
