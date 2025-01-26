@@ -20,7 +20,7 @@
         <th class="admin__label">体重</th>
         <th class="admin__label">食事摂取カロリー</th>
         <th class="admin__label">運動時間</th>
-        <th class="admin__label"></th>
+        <th class="admin__label">運動内容</th>
       </tr>
       @foreach($weight_logs as $weight_log)
       <tr class="admin__row">
@@ -30,7 +30,9 @@
         <td class="admin__data">{{$weight_log->exercise_time}}</td>
         <td class="admin__data">{{$weight_log->exercise_content}}</td>
         <td class="admin__data">
-          <a class="admin__detail-btn" href="#{{$weight_log->id}}">更新</a>
+          <div class="update-form__button">
+            <button class="update-form__button-submit" type="submit">更新</button>
+          </div>
         </td>
       </tr>
 

@@ -18,10 +18,12 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/register/step2', [UserController::class, 'register2']);
 Route::get('/weight_logs/create', [UserController::class, 'add']);
 Route::post('/weight_logs/create', [UserController::class, 'create']);
-Route::get('/weight_logs/{:weightLogId}/update', [UserController::class, 'edit']);
+Route::get('/weight_logs/create', [UserController::class, 'add']);
+Route::get('/weight_logs/search', [UserController::class, 'search']);
 Route::post('/weight_logs/{:weightLogId}/update', [UserController::class, 'update']);
 Route::get('/weight_logs/{:weightLogId}/delete', [UserController::class, 'delete']);
 Route::post('/weight_logs/{:weightLogId}/delete', [UserController::class, 'remove']);
+Route::post('/wight_logs/goal_setting', [UserController::class, 'target']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/weight_logs', [UserController::class, 'index']);

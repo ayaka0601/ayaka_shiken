@@ -59,6 +59,8 @@ class UserController extends Controller
         WeightLog::find($request->id)->delete();
         return redirect('/weight_logs');
     }
+
+    //ログアウト
     public function logout(Request $request)
     {
         Auth::logout();
